@@ -141,7 +141,7 @@ function initGame(){
   gBallV = [1,2];
   gBallR = (1/20)*gFieldSize[1];
   //height, width
-  gPaddleSize = [(1/5)*gFieldSize[0], (1/15)*gFieldSize[1]];
+  gPaddleSize = [3, (1/5)*gFieldSize[1]];
 }
 
 /*
