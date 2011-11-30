@@ -80,19 +80,28 @@ function ballLogic(){
   // changed all these numbers to more reasonable also, these kinda stuff should also be fields but we can
   // think about that later
   
-  if((gBallPos[0] == 10) && (gBallPos[1] > gPaddlePos[0] - 3) && (gBallPos[1] < (gPaddlePos[0] + gPaddleSize[0] + 3))){ //if it hits the left paddle
-    gBallV[0] = -gBallV[0]; //get faster after you hit it
-  }else if(gBallPos[0] <= gPaddleSize[1]){//top and bottom of paddles
-      if(gBallPos[1] == gPaddlePos[0] || gBallPos[1] == gPaddlePos[0] + gPaddleSize[0]){
-      	gBallV[0] = -gBallV[0];
-      }
+  if(gBallPos[0] == gPaddleSize[1]){ 
+	if(gBallPos[1] >= gPaddlePos[0] && gBallPos[1] <= gPaddlePos[0] + gPaddleSize[0]){ //if it hits the left paddle
+		gBallV[0] = -gBallV[0]; //get faster after you hit it/causes it to change direction
+	}
   }
-  if((gBallPos[0] == gFieldSize[0] - 10) && (gBallPos[1] > gPaddlePos[1] - 3) && (gBallPos[1] < (gPaddlePos[1] + gPaddleSize[0] + 3))){ //if it hits the right paddle
-    gBallV[0] = -gBallV[0];
-  }else if(gBallPos[0] <= gFieldSize - gPaddleSize[1]){//top and bottom of paddles
-     if(gBallPos[1] == gPaddlePos[1] || gBallPos[1] == gPaddlePos[1] + gPaddleSize[0]){
-	gBallV[0] = -gBallV[0];
-     }
+  else if(gBallPos[0] <= gPaddleSize[1]){//top and bottom of paddles
+		if(gBallPos[1] == gPaddlePos[0] || gBallPos[1] == gPaddlePos[0] + gPaddleSize[0]){
+			gBallV[0] = -gBallV[0];//reverses the ball(x)
+			gBallV[1] = -gBallV[1];//reverses the ball(y)
+		}
+	}
+  if((gBallPos[0] == gFieldSize[0] - gPaddleSize[1]){
+	if(gBallPos[1] >= gPaddlePos[1] && gBallPos[1] <= gPaddlePos[1] + gPaddleSize[0]){ //if it hits the right paddle
+		gBallV[0] = -gBallV[0];
+	}
+  }
+  else if(gBallPos[0] >= gFieldSize[0] - gPaddleSize[1]){//top and bottom of paddles
+		if(gBallPos[1] == gPaddlePos[1] || gBallPos[1] == gPaddlePos[1] + gPaddleSize[0]){
+			gBallV[0] = -gBallV[0];//reverses the ball(x)
+			gBallV[1] = -gBallV[1];//reverses the ball(y)
+		}
+	}
   
   // if ball goes out of frame reset in the middle and put to default speed and increment gScore...
   
